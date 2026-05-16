@@ -20,16 +20,15 @@
 			];
 
 			# Preserve user files
-			# users.yurii = {
-			#   directories = [
-			#     ".ssh"
-			#     ".mozilla"
-			#   ];
-			#
-			#   files = [
-			#
-			#   ];
-			# };
+			users.matoo = {
+			  directories = [
+					"impermanence-test"
+			  ];
+
+			  files = [
+
+			  ];
+			};
 		};
 	};
 }
