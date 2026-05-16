@@ -7,7 +7,6 @@
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
-	networking.hostName = "nixos";
 	networking.networkmanager.enable = true;
 
 	time.timeZone = "Europe/Berlin";
@@ -29,6 +28,4 @@
 	];
 
 	services.openssh.enable = true;
-
-	system.stateVersion = "25.11";
 }

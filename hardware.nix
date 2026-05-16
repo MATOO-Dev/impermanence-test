@@ -4,11 +4,36 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-	imports =
-		[ (modulesPath + "/profiles/qemu-guest.nix")
-		];
+	# imports =
+	# 	[ (modulesPath + "/profiles/qemu-guest.nix")
+	# 	];
 
-	# GENERATED!
-
+	# general
 	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+	system.stateVersion = "25.11";
+	networking.hostName = "nixos";
+
+	# hardware
+	boot = {
+		initrd = {
+			# systemd.enable = true;
+			availableKernelModules = [
+				"ahci"
+				"xhci_pci"
+				"virtio_pci"
+				"sr_mod"
+				"virtio_blk"
+			];
+			kernelModules = [];
+		};
+		kernelModules = ["kvm-amd"];
+		extraModulePackages = [];
+	};
+
+	services = {
+		qemuGuest.enable = true;
+		spice-vdagentd.enable = true;
+		xserver.enable = true;
+		xserver.videoDrivers = ["virtio"];
+	};
 }
